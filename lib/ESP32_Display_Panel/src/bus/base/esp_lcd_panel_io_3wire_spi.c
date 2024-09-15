@@ -66,7 +66,7 @@ static esp_err_t panel_io_rx_param(esp_lcd_panel_io_t *io, int lcd_cmd, void *pa
 static esp_err_t panel_io_tx_param(esp_lcd_panel_io_t *io, int lcd_cmd, const void *param, size_t param_size);
 static esp_err_t panel_io_tx_color(esp_lcd_panel_io_t *io, int lcd_cmd, const void *color, size_t color_size);
 static esp_err_t panel_io_del(esp_lcd_panel_io_t *io);
-static esp_err_t panel_io_register_event_callbacks(esp_lcd_panel_io_handle_t io, const esp_lcd_panel_io_callbacks_t *cbs, void *user_ctx);
+//static esp_err_t panel_io_register_event_callbacks(esp_lcd_panel_io_handle_t io, const esp_lcd_panel_io_callbacks_t *cbs, void *user_ctx);
 
 static esp_err_t set_line_level(esp_lcd_panel_io_3wire_spi_t *panel_io, spi_line_t line, uint32_t level);
 static esp_err_t reset_line_io(esp_lcd_panel_io_3wire_spi_t *panel_io, spi_line_t line);
@@ -121,7 +121,7 @@ esp_err_t esp_lcd_new_panel_io_3wire_spi(const esp_lcd_panel_io_3wire_spi_config
     panel_io->base.tx_param = panel_io_tx_param;
     panel_io->base.tx_color = panel_io_tx_color;
     panel_io->base.del = panel_io_del;
-    panel_io->base.register_event_callbacks = panel_io_register_event_callbacks;
+    //panel_io->base.register_event_callbacks = panel_io_register_event_callbacks;
 
     // Get GPIO mask and IO expander pin mask
     esp_err_t ret = ESP_OK;
@@ -250,12 +250,12 @@ static esp_err_t panel_io_tx_color(esp_lcd_panel_io_t *io, int lcd_cmd, const vo
 /**
  * @brief This function is not implemented and only for compatibility
  */
-static esp_err_t panel_io_register_event_callbacks(esp_lcd_panel_io_handle_t io, const esp_lcd_panel_io_callbacks_t *cbs, void *user_ctx)
-{
-    ESP_LOGE(TAG, "Register event callbacks is not supported");
+// static esp_err_t panel_io_register_event_callbacks(esp_lcd_panel_io_handle_t io, const esp_lcd_panel_io_callbacks_t *cbs, void *user_ctx)
+// {
+//     ESP_LOGE(TAG, "Register event callbacks is not supported");
 
-    return ESP_FAIL;
-}
+//     return ESP_FAIL;
+// }
 
 /**
  * @brief Set the level of specified line.
