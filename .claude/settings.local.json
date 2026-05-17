@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Recurse -Filter \"esp_idf_version.h\" \"C:\\\\Users\\\\Public\\\\Waveshare-ESP-Touch-LCD-4.3\\\\.pio\" | Select-Object -First 3 | ForEach-Object { $_.FullName; Get-Content $_.FullName | Select-Object -First 15 })",
+      "Bash(find /c/Users -name \"esp_lcd_panel_rgb.h\" 2>/dev/null | head -5)",
+      "Read(//c/Users/**)",
+      "WebFetch(domain:github.com)",
+      "WebSearch"
+    ]
+  }
+}
