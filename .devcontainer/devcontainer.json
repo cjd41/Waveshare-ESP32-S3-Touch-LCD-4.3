@@ -1,0 +1,11 @@
+{
+  "name": "PlatformIO ESP32-S3",
+  "build": { "dockerfile": "Dockerfile" },
+  "runArgs": ["--privileged"],
+  "mounts": ["source=/dev,target=/dev,type=bind"],
+  "customizations": {
+    "vscode": {
+      "extensions": ["platformio.platformio-ide"]
+    }
+  }
+}
