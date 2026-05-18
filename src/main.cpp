@@ -48,6 +48,8 @@ void setup()
         }
     }
 
+     setBacklightPower(HIGH);
+
     Serial.println("Initializing LVGL");
     assert(lvgl_port_init(board->getLCD(), board->getTouch()));
 
@@ -66,18 +68,5 @@ void setBacklightPower(bool activeHigh)
 
 void loop()
 {
-    if (g_io_base == nullptr) { delay(10); return; }
-
-    static bool     bl_on       = true;
-    static uint32_t last_toggle = 0;
-
-    uint32_t now      = millis();
-    uint32_t interval = bl_on ? 2000 : 1000;
-
-    if (now - last_toggle >= interval) {
-        bl_on = !bl_on;
-        setBacklightPower(bl_on ? HIGH : LOW);
-        last_toggle = now;
-    }
-    delay(10);
+    sleep(1);
 }
