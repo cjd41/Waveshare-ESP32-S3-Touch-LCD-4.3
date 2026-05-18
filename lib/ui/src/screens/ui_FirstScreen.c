@@ -8,16 +8,16 @@
 void ui_FirstScreen_screen_init(void)
 {
 ui_FirstScreen = lv_obj_create(NULL);
-lv_obj_clear_flag( ui_FirstScreen, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
+lv_obj_remove_flag( ui_FirstScreen, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 
-ui_Button1 = lv_btn_create(ui_FirstScreen);
+ui_Button1 = lv_button_create(ui_FirstScreen);
 lv_obj_set_width( ui_Button1, 255);
 lv_obj_set_height( ui_Button1, 174);
 lv_obj_set_x( ui_Button1, -202 );
 lv_obj_set_y( ui_Button1, 0 );
 lv_obj_set_align( ui_Button1, LV_ALIGN_CENTER );
 lv_obj_add_flag( ui_Button1, LV_OBJ_FLAG_SCROLL_ON_FOCUS );   /// Flags
-lv_obj_clear_flag( ui_Button1, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
+lv_obj_remove_flag( ui_Button1, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_text_font(ui_Button1, &lv_font_montserrat_30, LV_PART_MAIN| LV_STATE_DEFAULT);
 
 ui_Label1 = lv_label_create(ui_Button1);

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:lvgl.io)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/lvgl/lvgl/refs/tags/v9.2.0/examples/porting/sdl/main.c\")"
+    ]
+  }
+}

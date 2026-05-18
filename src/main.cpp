@@ -2,7 +2,7 @@
 #include <lvgl.h>
 #include <esp_display_panel.hpp>
 #include <ui.h>
-#include "lvgl_v8_port.h"
+#include "lvgl_v9_port.h"
 
 using namespace esp_panel::drivers;
 using namespace esp_panel::board;
