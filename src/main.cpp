@@ -7,8 +7,10 @@
 using namespace esp_panel::drivers;
 using namespace esp_panel::board;
 
-// CH422G IO expander pin number for USB OTG selection (must be held LOW)
-#define USB_SEL_PIN 5
+#define USB_SEL_PIN 5  // CH422G pin — USB OTG select, must be held LOW
+#define BL_PIN      2  // CH422G pin — LCD backlight, active HIGH
+
+static esp_expander::Base *g_io_base = nullptr;
 
 void setup()
 {
@@ -42,6 +44,7 @@ void setup()
         if (base != nullptr) {
             base->multiPinMode(1 << USB_SEL_PIN, OUTPUT);
             base->multiDigitalWrite(1 << USB_SEL_PIN, LOW);
+            g_io_base = base;
         }
     }
 
@@ -56,7 +59,25 @@ void setup()
     Serial.println("Setup done");
 }
 
+void setBacklightPower(bool activeHigh)
+{
+    g_io_base->multiDigitalWrite(1 << BL_PIN, activeHigh);
+}
+
 void loop()
 {
-    sleep(1);
+    if (g_io_base == nullptr) { delay(10); return; }
+
+    static bool     bl_on       = true;
+    static uint32_t last_toggle = 0;
+
+    uint32_t now      = millis();
+    uint32_t interval = bl_on ? 2000 : 1000;
+
+    if (now - last_toggle >= interval) {
+        bl_on = !bl_on;
+        setBacklightPower(bl_on ? HIGH : LOW);
+        last_toggle = now;
+    }
+    delay(10);
 }
